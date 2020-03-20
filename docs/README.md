@@ -1,5 +1,15 @@
 ##### 通过增加属性配置：preCls, 解决使用highlight.js渲染高亮代码时，不显示背景颜色问题
 ##### 当存在preCls配置时，为pre标签增加class值
+```
+document.getElementById('root').innerHTML =
+                marked(res, {
+                    highlight: function(code, language) {
+                        const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+                        return hljs.highlight(validLanguage, code).value;
+                    },
+                    preCls: 'hljs'
+                });
+```
 ----------------------------------------------------------------------------------
 
 Marked is
