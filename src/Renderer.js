@@ -21,14 +21,16 @@ module.exports = class Renderer {
         code = out;
       }
     }
+    
+    let preCls = this.options.preCls ? 'class=' + this.options.preCls : '';
 
     if (!lang) {
-      return '<pre><code>'
+      return '<pre' + preCls +'><code>'
         + (escaped ? code : escape(code, true))
         + '</code></pre>';
     }
 
-    return '<pre><code class="'
+    return '<pre' + preCls +'><code class="'
       + this.options.langPrefix
       + escape(lang, true)
       + '">'
