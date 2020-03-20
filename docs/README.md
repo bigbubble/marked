@@ -2,13 +2,13 @@
 ##### 当存在preCls配置时，为pre标签增加class值
 ```
 document.getElementById('root').innerHTML =
-                marked(res, {
-                    highlight: function(code, language) {
-                        const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
-                        return hljs.highlight(validLanguage, code).value;
-                    },
-                    preCls: 'hljs'
-                });
+  marked(res, {
+      highlight: function(code, language) {
+          const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+          return hljs.highlight(validLanguage, code).value;
+      },
+      preCls: 'hljs'
+  });
 ```
 ----------------------------------------------------------------------------------
 
