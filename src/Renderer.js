@@ -10,6 +10,10 @@ const {
 module.exports = class Renderer {
   constructor(options) {
     this.options = options || defaults;
+    // extract "width=127px" from href attribute
+    this.imageWidthHrefReg = new RegExp("(^|&)width=([^&]*)(&|$)");
+    // extract "height=128px" from href attribute
+    this.imageHeightHrefReg = new RegExp("(^|&)height=([^&]*)(&|$)");
   }
 
   code(code, infostring, escaped) {
@@ -155,6 +159,31 @@ module.exports = class Renderer {
     let out = '<img src="' + href + '" alt="' + text + '"';
     if (title) {
       out += ' title="' + title + '"';
+    }
+
+    // deal with iamge width and height attributes
+    let questionMarkIndex = href.indexOf("?");
+    if (questionMarkIndex > 0) {
+      let width = null, height = null;
+      let paramsString = href.substr(questionMarkIndex + 1);
+
+      let widthR = paramsString.match(this.imageWidthHrefReg);
+      if (widthR != null) {
+         width = unescape(widthR[2]);
+      }
+
+
+      let heightR = paramsString.match(this.imageHeightHrefReg);
+      if (heightR != null) {
+        height = unescape(heightR[2]);
+      }
+
+      if (width) {
+        out += ' width="' + width + '"';
+      }
+      if (height) {
+        out += ' height="' + height + '"';
+      }
     }
     out += this.options.xhtml ? '/>' : '>';
     return out;

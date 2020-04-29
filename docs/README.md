@@ -1,3 +1,8 @@
+##### 指定图片文件大小：在图片链接后面增加额外参数指定图片<code>width</code>和<code>height</code>
+```markdown
+![threadLocal](/img/diary/threadLocal.png?width=600px)
+```
+
 ##### 通过增加属性配置：preCls, 解决使用highlight.js渲染高亮代码时，不显示背景颜色问题
 ##### 当存在preCls配置时，为pre标签增加class值
 ```
