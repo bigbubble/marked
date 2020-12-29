@@ -15,7 +15,8 @@ function getDefaults() {
     silent: false,
     smartLists: false,
     smartypants: false,
-    xhtml: false
+    xhtml: false,
+    preCls: ''
   };
 }
 

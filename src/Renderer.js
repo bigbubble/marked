@@ -161,7 +161,7 @@ module.exports = class Renderer {
       out += ' title="' + title + '"';
     }
 
-    // deal with iamge width and height attributes
+    // deal with image width and height attributes
     let questionMarkIndex = href.indexOf("?");
     if (questionMarkIndex > 0) {
       let width = null, height = null;
